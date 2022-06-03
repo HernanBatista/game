@@ -1,8 +1,9 @@
 language: node_js
 node_js:
-  - '10'
-script:
+  - 16.14.2
+install:
   - npm install
+script:
   - npm run build
   - npm start
 cache:
@@ -14,6 +15,8 @@ notifications:
     on_failure: never
 deploy:
   provider: pages
+  cleanup: true
   github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
   on:
-    branch: main
+    branch: gh-pages
